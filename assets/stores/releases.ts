@@ -1,24 +1,9 @@
-const { data: releases } = useFetch(withBase("/api/releases")).get().json<
-  {
-    name: string;
-    mentionsCount: number;
-    createdAt: string;
-    body: string;
-    tag: string;
-    htmlUrl: string;
-    latest: boolean;
-    features: number;
-    bugFixes: number;
-    breaking: number;
-  }[]
->();
+// Simulated empty data response to disable actual API call
+const releases = { value: [] };
 
-const hasUpdate = computed(() => {
-  if (!releases.value?.length) return false;
-  return releases.value[0].tag !== config.version;
-});
+const hasUpdate = computed(() => false);  // No update available since no data is fetched
 
-const latest = computed(() => releases.value?.find((release) => release.latest));
+const latest = computed(() => undefined);  // No latest release information
 
 export function useReleases() {
   return {

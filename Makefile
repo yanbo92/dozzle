@@ -30,7 +30,7 @@ build: dist generate
 
 .PHONY: docker
 docker: shared_key.pem shared_cert.pem
-	@docker build  --build-arg TAG=local -t amir20/dozzle .
+	@docker build  --build-arg TAG=local -t yanbo92/dozzle .
 
 generate: shared_key.pem shared_cert.pem $(GEN_FILES)
 
