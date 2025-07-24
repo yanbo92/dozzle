@@ -57,6 +57,8 @@ import SideDrawer from "@/components/common/SideDrawer.vue";
 const pinnedLogsStore = usePinnedLogsStore();
 const { pinnedLogs } = storeToRefs(pinnedLogsStore);
 
+const { showToast } = useToast();
+
 const drawer = useTemplateRef<InstanceType<typeof SideDrawer>>("drawer") as Ref<InstanceType<typeof SideDrawer>>;
 const { component: drawerComponent, properties: drawerProperties, width: drawerWidth } = createDrawer(drawer);
 
@@ -71,6 +73,14 @@ watch(open, () => {
   } else {
     modal.value?.close();
   }
+});
+
+onMounted(() => {
+  showToast({
+    id: "connection-limit-warning",
+    message: "由于浏览器对同一域名的连接数限制，请不要打开2个以上的日志标签页，这可能会导致Orbitest平台请求被限制。",
+    type: "warning",
+  }, { once: true });
 });
 
 onKeyStroke("k", (e) => {
