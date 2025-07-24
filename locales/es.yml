@@ -13,6 +13,7 @@ toolbar:
   attach: Conectar
 action:
   copy-log: Copiar registro
+  copy-block: Copiar bloque
   copy-link: Copiar enlace permanente
   see-in-context: Ver en contexto
   show-details: Mostrar detalles
@@ -127,6 +128,7 @@ toasts:
   copied:
     title: Copiado
     message: Registro copiado al portapapeles
+    block-message: Bloque de registro copiado al portapapeles
   hidden:
     title: Oculto
     message: Entrada de registro oculta, actualizar para recuperar

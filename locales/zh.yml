@@ -13,6 +13,7 @@ toolbar:
   attach: 附加
 action:
   copy-log: 复制日志
+  copy-block: 复制块
   copy-link: 复制永久链接
   see-in-context: 在上下文中查看
   show-details: 显示详细信息
@@ -127,6 +128,7 @@ toasts:
   copied:
     title: 已复制
     message: 日志已复制到剪贴板
+    block-message: 日志块已复制到剪贴板
   hidden:
     title: 已隐藏
     message: 日志块已被隐藏，刷新页面可恢复

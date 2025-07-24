@@ -13,6 +13,7 @@ toolbar:
   attach: Anexar
 action:
   copy-log: Copiar registo
+  copy-block: Copiar bloco
   copy-link: Copiar hiperligação permanente
   see-in-context: Ver no contexto
   show-details: Mostrar detalhes
@@ -133,6 +134,10 @@ toasts:
   copied:
     title: Copiado
     message: Log copiado para a área de transferência
+    block-message: Bloco de log copiado para a área de transferência
+  hidden:
+    title: Oculto
+    message: Bloco de log ocultado, actualizar para recuperar
 
 analytics:
   creating_table: A criar tabela temporária...

@@ -44,6 +44,12 @@
           {{ $t("action.copy-log") }}
         </a>
       </li>
+      <li v-if="isSupported && logEntry instanceof SimpleLogEntry && logEntry.position">
+        <a @click="copyLogBlock()">
+          <material-symbols:content-copy />
+          {{ $t("action.copy-block") }}
+        </a>
+      </li>
       <li v-if="isSupported">
         <a @click="copyPermalink()">
           <material-symbols:link />
@@ -89,6 +95,9 @@ const { t } = useI18n();
 // Inject hide functionality from parent
 const hideLogEntryFn = inject<((logId: number) => void) | undefined>('hideLogEntry', undefined);
 
+// Inject messages from parent to access the full log stream
+const messages = inject<Ref<LogEntry<string | JSONObject>[]>>('messages', ref([]));
+
 async function copyLogMessage() {
   if (logEntry instanceof ComplexLogEntry) {
     await copy(stripAnsi(logEntry.rawMessage));
@@ -101,6 +110,65 @@ async function copyLogMessage() {
       {
         title: t("toasts.copied.title"),
         message: t("toasts.copied.message"),
+        type: "info",
+      },
+      { expire: 2000 },
+    );
+  }
+}
+
+async function copyLogBlock() {
+  if (!(logEntry instanceof SimpleLogEntry) || !logEntry.position) {
+    return;
+  }
+
+  const targetIndex = messages.value.findIndex(message => message.id === logEntry.id);
+  if (targetIndex === -1) return;
+
+  const blockEntries: SimpleLogEntry[] = [];
+  
+  // 向后查找块的开始
+  let startIndex = targetIndex;
+  while (startIndex >= 0) {
+    const entry = messages.value[startIndex];
+    if (entry instanceof SimpleLogEntry && 
+        entry.containerID === logEntry.containerID &&
+        entry.position) {
+      blockEntries.unshift(entry);
+      if (entry.position === 'start') break;
+      startIndex--;
+    } else {
+      break;
+    }
+  }
+  
+  // 向前查找块的结束
+  let endIndex = targetIndex + 1;
+  while (endIndex < messages.value.length) {
+    const entry = messages.value[endIndex];
+    if (entry instanceof SimpleLogEntry && 
+        entry.containerID === logEntry.containerID &&
+        entry.position) {
+      blockEntries.push(entry);
+      if (entry.position === 'end') break;
+      endIndex++;
+    } else {
+      break;
+    }
+  }
+
+  // 将所有块条目的原始消息连接起来
+  const blockContent = blockEntries
+    .map(entry => stripAnsi(entry.rawMessage))
+    .join('\n');
+
+  await copy(blockContent);
+
+  if (copied.value) {
+    showToast(
+      {
+        title: t("toasts.copied.title"),
+        message: t("toasts.copied.block-message"),
         type: "info",
       },
       { expire: 2000 },

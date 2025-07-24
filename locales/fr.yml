@@ -13,6 +13,7 @@ toolbar:
   attach: Attacher
 action:
   copy-log: Copier le journal
+  copy-block: Copier le bloc
   copy-link: Copier le permalien
   see-in-context: Voir dans le contexte
   show-details: Afficher les détails
@@ -127,6 +128,7 @@ toasts:
   copied:
     title: Copié
     message: Journal copié dans le presse-papiers
+    block-message: Bloc de journal copié dans le presse-papiers
   hidden:
     title: Masqué
     message: L'entrée de journal a été masquée, actualiser pour récupérer

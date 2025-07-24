@@ -13,6 +13,7 @@ toolbar:
   attach: Koppelen
 action:
   copy-log: Log kopiëren
+  copy-block: Blok kopiëren
   copy-link: Permalink kopiëren
   see-in-context: Bekijk in context
   show-details: Toon details
@@ -127,6 +128,10 @@ toasts:
   copied:
     title: Gekopieerd
     message: Log gekopieerd naar klembord
+    block-message: Logblok gekopieerd naar klembord
+  hidden:
+    title: Verborgen
+    message: Logblok is verborgen, ververs om te herstellen
 analytics:
   creating_table: Tijdelijke tabel wordt aangemaakt...
   downloading: Containerlogs worden opgehaald... ({size})

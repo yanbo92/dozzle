@@ -13,6 +13,7 @@ toolbar:
   attach: Tilknyt
 action:
   copy-log: Kopier log
+  copy-block: Kopier blok
   copy-link: Kopier permalink
   see-in-context: Se i kontekst
   show-details: Vis detaljer
@@ -127,6 +128,10 @@ toasts:
   copied:
     title: Kopieret
     message: Log kopieret til clipboard
+    block-message: Log-blok kopieret til clipboard
+  hidden:
+    title: Skjult
+    message: Log-blok er skjult, opdater for at gendanne
 analytics:
   creating_table: Opretter midlertidig tabel...
   downloading: Henter containerlogfiler... ({size})

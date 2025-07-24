@@ -13,6 +13,7 @@ toolbar:
   attach: Dołącz
 action:
   copy-log: Skopiuj log
+  copy-block: Skopiuj blok
   copy-link: Skopiuj permalink
   see-in-context: Zobacz w kontekście
   show-details: Pokaż szczegóły
@@ -131,6 +132,10 @@ toasts:
   copied:
     title: Skopiowany
     message: Log skopiowany do schowka
+    block-message: Blok logu skopiowany do schowka
+  hidden:
+    title: Ukryty
+    message: Blok logu został ukryty, odśwież aby przywrócić
 analytics:
   creating_table: Tworzenie tymczasowej tabeli...
   downloading: Pobieranie logów kontenerów... ({size})

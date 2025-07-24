@@ -13,6 +13,7 @@ toolbar:
   attach: 연결
 action:
   copy-log: 로그 복사
+  copy-block: 블록 복사
   copy-link: 영구 링크 복사
   see-in-context: 컨텍스트에서 보기
   show-details: 세부 정보 표시
@@ -127,6 +128,10 @@ toasts:
   copied:
     title: 복사 완료
     message: 로그가 클립보드에 복사되었습니다
+    block-message: 로그 블록이 클립보드에 복사되었습니다
+  hidden:
+    title: 숨김
+    message: 로그 블록이 숨겨졌습니다. 새로고침하여 복구하세요
 analytics:
   creating_table: 임시 테이블을 생성하고 있습니다...
   downloading: 컨테이너 로그를 가져오고 있습니다... ({size})

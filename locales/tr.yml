@@ -13,6 +13,7 @@ toolbar:
   attach: Bağla
 action:
   copy-log: Günlüğü kopyala
+  copy-block: Bloğu kopyala
   copy-link: Kalıcı bağlantıyı kopyala
   see-in-context: Bağlamda gör
   show-details: Detayları göster
@@ -124,6 +125,10 @@ toasts:
   copied:
     title: Kopyalandı
     message: Günlük panoya kopyalandı
+    block-message: Günlük bloğu panoya kopyalandı
+  hidden:
+    title: Gizlendi
+    message: Günlük bloğu gizlendi, kurtarmak için yenileyin
 analytics:
   creating_table: Geçici tablo oluşturuluyor...
   downloading: Konteyner günlükleri alınıyor... ({size})

@@ -13,6 +13,7 @@ toolbar:
   show-hostname: Prikaži ime gostitelja
 action:
   copy-log: Kopiraj dnevnik
+  copy-block: Kopiraj blok
   copy-link: Kopiraj trajno povezavo
   see-in-context: Glej v kontekstu
   show-details: Prikaži podrobnosti
@@ -122,6 +123,10 @@ toasts:
   copied:
     title: Kopirano
     message: Kopirano v odložišče
+    block-message: Blok dnevnika kopiran v odložišče
+  hidden:
+    title: Skrito
+    message: Blok dnevnika je skrit, osvežite za obnovitev
 analytics:
   downloading: Pridobivanje dnevnikov zabojnika... ({size})
   evaluating_query: Ocenjevanje poizvedbe...

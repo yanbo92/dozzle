@@ -13,6 +13,7 @@ toolbar:
   attach: 附加
 action:
   copy-log: 複製日誌
+  copy-block: 複製區塊
   copy-link: 複製永久連結
   see-in-context: 在內容中查看
   show-details: 顯示詳細資訊
@@ -127,6 +128,10 @@ toasts:
   copied:
     title: 已複製
     message: 日誌已複製到剪貼簿
+    block-message: 日誌區塊已複製到剪貼簿
+  hidden:
+    title: 已隱藏
+    message: 日誌區塊已被隱藏，重新整理可恢復
 analytics:
   creating_table: 正在建立臨時資料表...
   downloading: 正在取得容器日誌... ({size})

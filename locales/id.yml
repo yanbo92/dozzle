@@ -13,6 +13,7 @@ toolbar:
   attach: Lampirkan
 action:
   copy-log: Salin log
+  copy-block: Salin blok
   copy-link: Salin permalink
   see-in-context: Lihat dalam konteks
   show-details: Tampilkan detail
@@ -138,6 +139,10 @@ toasts:
   copied:
     title: Disalin
     message: Log disalin ke clipboard
+    block-message: Blok log disalin ke clipboard
+  hidden:
+    title: Disembunyikan
+    message: Blok log disembunyikan, segarkan untuk memulihkan
 
 analytics:
   creating_table: Membuat tabel sementara...

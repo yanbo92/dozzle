@@ -13,6 +13,7 @@ toolbar:
   attach: Anexar
 action:
   copy-log: Copiar log
+  copy-block: Copiar bloco
   copy-link: Copiar permalink
   see-in-context: Ver no contexto
   show-details: Mostrar detalhes
@@ -127,6 +128,7 @@ toasts:
   copied:
     title: Copiado
     message: Log copiado para a área de transferência
+    block-message: Bloco de log copiado para a área de transferência
   hidden:
     title: Oculto
     message: Entrada de log oculta, atualizar para recuperar

@@ -29,6 +29,9 @@ const { messages, opened, loading, error, hideLogEntry } = streamSource(toRef(()
 // Provide hide functionality to child components
 provide('hideLogEntry', hideLogEntry);
 
+// Provide messages to child components for copy block functionality
+provide('messages', messages);
+
 const color = computed(() => {
   if (error.value) return "error";
   if (loading.value) return "secondary";

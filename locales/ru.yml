@@ -13,6 +13,7 @@ toolbar:
   attach: Подключить
 action:
   copy-log: Копировать лог
+  copy-block: Копировать блок
   copy-link: Копировать постоянную ссылку
   see-in-context: Посмотреть в контексте
   show-details: Показать детали
@@ -127,6 +128,10 @@ toasts:
   copied:
     title: Скопировано
     message: Лог скопирован в буфер обмена
+    block-message: Блок лога скопирован в буфер обмена
+  hidden:
+    title: Скрыто
+    message: Блок лога скрыт, обновите для восстановления
 analytics:
   creating_table: Создание временной таблицы...
   downloading: Получение логов контейнеров... ({size})

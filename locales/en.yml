@@ -13,6 +13,7 @@ toolbar:
   attach: Attach
 action:
   copy-log: Copy log
+  copy-block: Copy block
   copy-link: Copy permalink
   see-in-context: See in context
   show-details: Show details
@@ -127,6 +128,7 @@ toasts:
   copied:
     title: Copied
     message: Copied to clipboard
+    block-message: Log block copied to clipboard
   hidden:
     title: Hidden
     message: Log block has been hidden, refresh to recover
