@@ -16,6 +16,7 @@ action:
   copy-link: Копировать постоянную ссылку
   see-in-context: Посмотреть в контексте
   show-details: Показать детали
+  hide-log: Скрыть лог
 label:
   containers: Контейнеры
   container: Нет контейнеров | 1 контейнер | {count} контейнеров

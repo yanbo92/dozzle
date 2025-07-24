@@ -16,6 +16,7 @@ action:
   copy-link: Kopiraj trajno povezavo
   see-in-context: Glej v kontekstu
   show-details: Prikaži podrobnosti
+  hide-log: Skrij dnevnik
 label:
   containers: Zabojniki
   service: Ni storitev | 1 storitev | {count} storitev
@@ -52,13 +53,10 @@ error:
   logs-skipped: Prikaži {total} skritih vnosov
   events-stream:
     title: Nepričakovana napaka
-    message: Uporabniški vmesnik Dozzle se ni mogel povezati z API-jem. 
-      Preverite omrežne nastavitve. Če uporabljate obratni proxy, se 
-      prepričajte, da je pravilno konfiguriran.
+    message: Uporabniški vmesnik Dozzle se ni mogel povezati z API-jem. Preverite omrežne nastavitve. Če uporabljate obratni proxy, se prepričajte, da je pravilno konfiguriran.
   events-timeout:
     title: Nekaj ni v redu
-    message: Časovna omejitev uporabniškega vmesnika Dozzle je potekla med 
-      povezovanjem z API-jem. Preverite omrežno povezavo in poskusite znova.
+    message: Časovna omejitev uporabniškega vmesnika Dozzle je potekla med povezovanjem z API-jem. Preverite omrežno povezavo in poskusite znova.
   container-not-found: Zabojnika ni bilo mogoče najti
 alert:
   redirected:
@@ -66,9 +64,7 @@ alert:
     message: Dozzle vas je samodejno preusmeril v nov zabojnik {containerId}.
   similar-container-found:
     title: Najden podoben zabojnik
-    message: Dozzle je našel podoben zabojnik {containerId}, ki se izvaja na 
-      istem gostitelju in bo samodejno preklopil nanj, razen če kliknete 
-      »Prekliči«.
+    message: Dozzle je našel podoben zabojnik {containerId}, ki se izvaja na istem gostitelju in bo samodejno preklopil nanj, razen če kliknete »Prekliči«.
 title:
   page-not-found: Strani ni bilo mogoče najti
   login: Zahtevana overitev
@@ -96,8 +92,7 @@ settings:
   show-stopped-containers: Prikaži ustavljene zabojnike
   about: O programu
   search: Omogočite iskanje z Dozzle z uporabo
-  update-available: Nova različica je na voljo! Posodobi na <a href="{href}" 
-    target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
+  update-available: Nova različica je na voljo! Posodobi na <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
   show-std: Prikaži oznake stdout in stderr
   compact: Omogoči kompaktni način za dnevnike
   log:
@@ -108,14 +103,9 @@ settings:
       start-line: To je večvrstično sporočilo o napaki
       middle-line: z drugo vrstico
       end-line: in nazadnje tretja vrstica.
-    simple: To je zelo zelo dolgo sporočilo, ki bi se privzeto prelomilo. Če 
-      onemogočite mehke ovoje, bi to onemogočili. Lorem ipsum dolor sit amet, 
-      consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-      dolore magna aliqua.
-  using-version: Uporabljaš <a href="https://dozzle.dev/" target="_blank" 
-    rel="noreferrer noopener">Dozzle</a> {version}.
-  help-support: "Prosimo, podprite Dozzle z donacijo ali sponzoriranjem na GitHubu.
-    Vaši prispevki nam pomagajo izboljšati Dozzle za vse. Hvala! 🙏🏼\n"
+    simple: To je zelo zelo dolgo sporočilo, ki bi se privzeto prelomilo. Če onemogočite mehke ovoje, bi to onemogočili. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  using-version: Uporabljaš <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version}.
+  help-support: "Prosimo, podprite Dozzle z donacijo ali sponzoriranjem na GitHubu. Vaši prispevki nam pomagajo izboljšati Dozzle za vse. Hvala! 🙏🏼\n"
   automatic-redirect: Samodejna preusmeritev na nove zabojnike z istim imenom
 releases:
   features: ena nova funkcija | {count} funkcij

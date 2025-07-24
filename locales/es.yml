@@ -16,6 +16,7 @@ action:
   copy-link: Copiar enlace permanente
   see-in-context: Ver en contexto
   show-details: Mostrar detalles
+  hide-log: Ocultar registro
 label:
   containers: Contenedores
   container: No contenedores | 1 contenedor | {count} contenedores
@@ -126,6 +127,9 @@ toasts:
   copied:
     title: Copiado
     message: Registro copiado al portapapeles
+  hidden:
+    title: Oculto
+    message: Entrada de registro oculta, actualizar para recuperar
 analytics:
   creating_table: Creando tabla temporal...
   downloading: Obteniendo registros de contenedores... ({size})

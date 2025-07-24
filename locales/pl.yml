@@ -16,6 +16,7 @@ action:
   copy-link: Skopiuj permalink
   see-in-context: Zobacz w kontekście
   show-details: Pokaż szczegóły
+  hide-log: Ukryj log
 label:
   service: Brak usług | 1 usługa | {count} usług
   total-containers: Całkowita liczba kontenerów
@@ -58,8 +59,7 @@ error:
   events-stream:
     title: Niespodziewany błąd
     message: >-
-      Dozzle nie był wstanie połączyć się z API. Sprawdź ustawienia sieciowe.
-      Jeżeli korzysasz z reverse proxy, upewnij się że jest poprawnie skonfigurowane.
+      Dozzle nie był wstanie połączyć się z API. Sprawdź ustawienia sieciowe. Jeżeli korzysasz z reverse proxy, upewnij się że jest poprawnie skonfigurowane.
   events-timeout:
     title: Coś jest nie tak
     message: >-
@@ -71,8 +71,7 @@ alert:
   similar-container-found:
     title: Podobny kontener został znaleziony
     message: >-
-      Dozzle znalazł podobny kontener {containerId} który działa na tym samym
-      hoście i przekieruje Cię na niego automatycznie jeżeli nie klikniesz 'Anuluj'
+      Dozzle znalazł podobny kontener {containerId} który działa na tym samym hoście i przekieruje Cię na niego automatycznie jeżeli nie klikniesz 'Anuluj'
 title:
   page-not-found: Strona nie została znaleziona
   login: Wymagane uwierzytelnienie
@@ -104,8 +103,7 @@ settings:
   search: Włącz szukanie z dozzle
   using-version: Używasz <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> w wersji {version}.
   update-available: >-
-    Nowa wersja jest dostępna! Zaktualizuj do <a href="{href}" target="_blank"
-    rel="noreferrer noopener">{nextVersion}</a>.
+    Nowa wersja jest dostępna! Zaktualizuj do <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
   show-std: Pokaż etykiety dla stdout i stderr
   automatic-redirect: Automatycznie przekieruj na kontener o tej samej nazwie
   compact: Włącz tryb kompaktowy dla logów

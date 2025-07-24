@@ -16,6 +16,7 @@ action:
   copy-link: Permalink kopiëren
   see-in-context: Bekijk in context
   show-details: Toon details
+  hide-log: Log verbergen
 label:
   containers: Containers
   container: Geen containers | 1 container | {count} containers
@@ -54,8 +55,7 @@ error:
   events-stream:
     title: Onverwachte fout
     message: >-
-      De Dozzle-interface kon geen verbinding maken met de API. Controleer je netwerkinstellingen.
-      Gebruik je een reverse proxy? Zorg er dan voor dat deze correct is geconfigureerd.
+      De Dozzle-interface kon geen verbinding maken met de API. Controleer je netwerkinstellingen. Gebruik je een reverse proxy? Zorg er dan voor dat deze correct is geconfigureerd.
   events-timeout:
     title: Er gaat iets mis
     message: >-

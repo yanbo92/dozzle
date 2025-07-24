@@ -16,6 +16,7 @@ action:
   copy-link: Copier le permalien
   see-in-context: Voir dans le contexte
   show-details: Afficher les détails
+  hide-log: Masquer le journal
 label:
   containers: Conteneurs
   container: Pas de conteneur | 1 conteneur | {count} conteneurs
@@ -126,6 +127,9 @@ toasts:
   copied:
     title: Copié
     message: Journal copié dans le presse-papiers
+  hidden:
+    title: Masqué
+    message: L'entrée de journal a été masquée, actualiser pour récupérer
 analytics:
   creating_table: Création d'une table temporaire...
   downloading: Récupération des journaux des conteneurs... ({size})

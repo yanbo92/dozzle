@@ -16,6 +16,7 @@ action:
   copy-link: 複製永久連結
   see-in-context: 在內容中查看
   show-details: 顯示詳細資訊
+  hide-log: 隱藏日誌
 label:
   containers: 容器
   container: 無容器 | 1 個容器 | {count} 個容器
@@ -54,8 +55,7 @@ error:
   events-stream:
     title: 意外錯誤
     message: >-
-      Dozzle UI 無法連線至 API。請檢查您的網路設定。
-      如果您使用反向代理伺服器，請確認其設定正確。
+      Dozzle UI 無法連線至 API。請檢查您的網路設定。 如果您使用反向代理伺服器，請確認其設定正確。
   events-timeout:
     title: 發生錯誤
     message: >-
@@ -67,8 +67,7 @@ alert:
   similar-container-found:
     title: 找到相似的容器
     message: >-
-      Dozzle 在相同主機上找到一個相似的容器 {containerId}，
-      除非您點選「取消」，否則系統將自動切換至該容器。
+      Dozzle 在相同主機上找到一個相似的容器 {containerId}， 除非您點選「取消」，否則系統將自動切換至該容器。
 title:
   page-not-found: 找不到頁面
   login: 需要身份驗證
@@ -100,8 +99,7 @@ settings:
   search: 啟用 Dozzle 搜尋功能
   using-version: 您目前使用的是 <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version}。
   update-available: >-
-    有新版本可用！請更新至 <a href="{href}" target="_blank"
-    rel="noreferrer noopener">{nextVersion}</a>。
+    有新版本可用！請更新至 <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>。
   show-std: 顯示標準輸出(stdout)與標準錯誤(stderr)標籤
   automatic-redirect: 自動重新導向至相同名稱的新容器
   compact: 啟用緊湊模式

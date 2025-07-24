@@ -16,6 +16,7 @@ action:
   copy-link: Permalink kopieren
   see-in-context: Im Kontext anzeigen
   show-details: Details anzeigen
+  hide-log: Log ausblenden
 label:
   containers: Container
   container: Keine Container | 1 Container | {count} Container
@@ -126,6 +127,9 @@ toasts:
   copied:
     title: Kopiert
     message: Log in Zwischenablage kopiert
+  hidden:
+    title: Ausgeblendet
+    message: Log-Eintrag wurde ausgeblendet, aktualisieren um wiederherzustellen
 analytics:
   creating_table: Temporäre Tabelle wird erstellt...
   downloading: Container-Logs werden abgerufen... ({size})

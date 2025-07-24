@@ -24,7 +24,10 @@ const { entity, streamSource } = $defineProps<{
 
 const { historical } = useLoggingContext();
 
-const { messages, opened, loading, error } = streamSource(toRef(() => entity));
+const { messages, opened, loading, error, hideLogEntry } = streamSource(toRef(() => entity));
+
+// Provide hide functionality to child components
+provide('hideLogEntry', hideLogEntry);
 
 const color = computed(() => {
   if (error.value) return "error";

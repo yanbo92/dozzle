@@ -16,6 +16,7 @@ action:
   copy-link: Copia permalink
   see-in-context: Vedi nel contesto
   show-details: Mostra dettagli
+  hide-log: Nascondi log
 label:
   containers: Container
   container: Nessun container | 1 container | {count} container
@@ -126,6 +127,9 @@ toasts:
   copied:
     title: Copiato
     message: Log copiato nella clipboard
+  hidden:
+    title: Nascosto
+    message: Voce di log nascosta, aggiorna per recuperare
 analytics:
   creating_table: Creazione tabella temporanea...
   downloading: Recupero dei log dei container... ({size})

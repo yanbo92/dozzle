@@ -16,6 +16,7 @@ action:
   copy-link: Copiar hiperligação permanente
   see-in-context: Ver no contexto
   show-details: Mostrar detalhes
+  hide-log: Ocultar registo
 label:
   containers: Contentores
   container: Nenhum contentor | 1 contentor | {count} contentores
@@ -58,8 +59,7 @@ error:
   events-stream:
     title: Erro inesperado
     message: >-
-      Dozzle UI não conseguiu ligar à API. Por favor, verifique as suas definições de rede.
-      Se estiver a utilizar um proxy reverso, certifique-se de que está configurado correctamente.
+      Dozzle UI não conseguiu ligar à API. Por favor, verifique as suas definições de rede. Se estiver a utilizar um proxy reverso, certifique-se de que está configurado correctamente.
   events-timeout:
     title: Algo não está bem
     message: >-
@@ -95,8 +95,7 @@ settings:
   show-timesamps: Mostrar carimbos de tempo
   soft-wrap: Linhas de texto de embrulho suave
   12-24-format: >-
-    Por defeito, Dozzle utilizará o locale do seu navegador para formatar a hora. Pode
-    forçar ao estilo de 12 ou 24 horas.
+    Por defeito, Dozzle utilizará o locale do seu navegador para formatar a hora. Pode forçar ao estilo de 12 ou 24 horas.
   font-size: Tamanho de letra a utilizar para os registos
   color-scheme: Esquema de cores
   options: Opções
@@ -106,8 +105,7 @@ settings:
   search: Habilitar a pesquisa com Dozzle usando
   using-version: Está a usar <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version}.
   update-available: >-
-    Está disponível uma nova versão! Actualização para
-    <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
+    Está disponível uma nova versão! Actualização para <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
   show-std: Mostrar etiquetas de saída padrão e saída de erro padrão
   automatic-redirect: Redirecionar automaticamente para novos contentores com o mesmo nome
   compact: Compactar a interface do utilizador

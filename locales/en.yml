@@ -16,6 +16,7 @@ action:
   copy-link: Copy permalink
   see-in-context: See in context
   show-details: Show details
+  hide-log: Hide block
 label:
   containers: Containers
   container: No containers | 1 container | {count} containers
@@ -54,14 +55,11 @@ error:
   events-stream:
     title: Unexpected Error
     message: >-
-      Dozzle UI wasn't able to connect to API. Please check your network settings.
-      If you are using a reverse proxy, please make sure it is configured
-      properly.
+      Dozzle UI wasn't able to connect to API. Please check your network settings. If you are using a reverse proxy, please make sure it is configured properly.
   events-timeout:
     title: Something is not right
     message: >-
-      Dozzle UI timed out while connecting to API. Please check network
-      connection and try again.
+      Dozzle UI timed out while connecting to API. Please check network connection and try again.
 alert:
   redirected:
     title: Redirected to new container
@@ -69,8 +67,7 @@ alert:
   similar-container-found:
     title: Similar container found
     message: >-
-      Dozzle found a similar container {containerId} that is running on the same
-      host and will automatically switch to it unless you click 'Cancel'.
+      Dozzle found a similar container {containerId} that is running on the same host and will automatically switch to it unless you click 'Cancel'.
 title:
   page-not-found: Page not found
   login: Authentication Required
@@ -87,8 +84,7 @@ placeholder:
   search: Search
 settings:
   help-support: >
-    Please support Dozzle by donating or sponsoring us on GitHub. Your contributions help us improve Dozzle for
-    everyone. Thank you! 🙏🏼
+    Please support Dozzle by donating or sponsoring us on GitHub. Your contributions help us improve Dozzle for everyone. Thank you! 🙏🏼
   display: Display
   locale: Override language
   small-scrollbars: Use smaller scrollbars
@@ -103,8 +99,7 @@ settings:
   search: Enable searching with Dozzle using
   using-version: You are using <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version}.
   update-available: >-
-    New version is available! Update to <a href="{href}" target="_blank"
-    rel="noreferrer noopener">{nextVersion}</a>.
+    New version is available! Update to <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>.
   show-std: Show stdout and stderr labels
   automatic-redirect: Automatically redirect to new containers with the same name
   compact: Enable compact mode for logs
@@ -132,6 +127,9 @@ toasts:
   copied:
     title: Copied
     message: Copied to clipboard
+  hidden:
+    title: Hidden
+    message: Log block has been hidden, refresh to recover
 analytics:
   creating_table: Creating temporary table...
   downloading: Fetching container logs... ({size})

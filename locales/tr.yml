@@ -16,6 +16,7 @@ action:
   copy-link: Kalıcı bağlantıyı kopyala
   see-in-context: Bağlamda gör
   show-details: Detayları göster
+  hide-log: Günlüğü gizle
 label:
   containers: Konteynerlar
   container: Konteyner yok | 1 konteyner | {count} konteyner
@@ -60,13 +61,11 @@ error:
   events-stream:
     title: Beklenmeyen Hata
     message: >-
-      Dozzle arayüzü API'ye bağlanamadı. Lütfen ağ ayarlarınızı kontrol edin.
-      Ters proxy kullanıyorsanız, doğru yapılandırıldığından emin olun.
+      Dozzle arayüzü API'ye bağlanamadı. Lütfen ağ ayarlarınızı kontrol edin. Ters proxy kullanıyorsanız, doğru yapılandırıldığından emin olun.
   events-timeout:
     title: Bir şeyler ters gidiyor
     message: >-
-      Dozzle arayüzü API'ye bağlanırken zaman aşımına uğradı. Lütfen ağ
-      bağlantısını kontrol edin ve tekrar deneyin.
+      Dozzle arayüzü API'ye bağlanırken zaman aşımına uğradı. Lütfen ağ bağlantısını kontrol edin ve tekrar deneyin.
 alert:
   redirected:
     title: Yeni konteynere yönlendirildi
@@ -74,8 +73,7 @@ alert:
   similar-container-found:
     title: Benzer konteyner bulundu
     message: >-
-      Dozzle, aynı sunucuda çalışan benzer bir {containerId} konteyneri buldu ve
-      'İptal'e tıklamadığınız sürece otomatik olarak ona geçecektir.
+      Dozzle, aynı sunucuda çalışan benzer bir {containerId} konteyneri buldu ve 'İptal'e tıklamadığınız sürece otomatik olarak ona geçecektir.
 title:
   page-not-found: Sayfa bulunamadı
   login: Kimlik Doğrulama Gerekli
@@ -107,8 +105,7 @@ settings:
   search: Dozzle kullanarak aramayı etkinleştir
   using-version: <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version} kullanıyorsunuz.
   update-available: >-
-    Yeni sürüm mevcut! <a href="{href}" target="_blank"
-    rel="noreferrer noopener">{nextVersion}</a> sürümüne güncelleyin.
+    Yeni sürüm mevcut! <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a> sürümüne güncelleyin.
   show-std: stdout ve stderr etiketlerini göster
   automatic-redirect: Aynı ada sahip yeni konteynerlere otomatik olarak yönlendir
   compact: Günlükler için kompakt modu etkinleştir

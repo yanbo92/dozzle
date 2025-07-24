@@ -1,5 +1,5 @@
 import { HistoricalContainer } from "@/models/Container";
-import { JSONObject, LoadMoreLogEntry, LogEntry } from "@/models/LogEntry";
+import { JSONObject, LoadMoreLogEntry, LogEntry, SimpleLogEntry } from "@/models/LogEntry";
 import { ShallowRef } from "vue";
 import { loadBetween } from "@/composable/eventStreams";
 
@@ -116,10 +116,60 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
     }
   }
 
+  function hideLogEntry(logId: number) {
+    const targetEntry = messages.value.find(message => message.id === logId);
+    if (!targetEntry) return;
+
+    // If it's a simple log entry with position info, hide the entire block
+    // This uses the same logic as the green vertical bar (LogLevel component)
+    if (targetEntry instanceof SimpleLogEntry && targetEntry.position) {
+      const targetIndex = messages.value.findIndex(message => message.id === logId);
+      const blockIds = new Set<number>();
+      
+      // Find the start of the block by going backwards
+      let startIndex = targetIndex;
+      while (startIndex >= 0) {
+        const entry = messages.value[startIndex];
+        if (entry instanceof SimpleLogEntry && 
+            entry.containerID === targetEntry.containerID &&
+            entry.position) {
+          blockIds.add(entry.id);
+          if (entry.position === 'start') break;
+          startIndex--;
+        } else {
+          break;
+        }
+      }
+      
+      // Find the end of the block by going forwards
+      let endIndex = targetIndex + 1;
+      while (endIndex < messages.value.length) {
+        const entry = messages.value[endIndex];
+        if (entry instanceof SimpleLogEntry && 
+            entry.containerID === targetEntry.containerID &&
+            entry.position) {
+          blockIds.add(entry.id);
+          if (entry.position === 'end') break;
+          endIndex++;
+        } else {
+          break;
+        }
+      }
+      
+      // Hide the entire block
+      messages.value = messages.value.filter(message => !blockIds.has(message.id));
+      return;
+    }
+
+    // Default behavior: hide single entry
+    messages.value = messages.value.filter(message => message.id !== logId);
+  }
+
   return {
     messages,
     opened,
     error,
     loading,
+    hideLogEntry,
   };
 }

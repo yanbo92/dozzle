@@ -56,6 +56,13 @@
           {{ $t("action.show-details") }}
         </a>
       </li>
+      <li class="border-t border-base-content/20 my-1"></li>
+      <li>
+        <a @click="hideLogEntry()" class="text-warning hover:bg-warning/10">
+          <material-symbols:visibility-off />
+          {{ $t("action.hide-log") }}
+        </a>
+      </li>
     </ul>
   </div>
 </template>
@@ -78,6 +85,9 @@ const { isSearching, resetSearch } = useSearchFilter();
 
 const { copy, isSupported, copied } = useClipboard();
 const { t } = useI18n();
+
+// Inject hide functionality from parent
+const hideLogEntryFn = inject<((logId: number) => void) | undefined>('hideLogEntry', undefined);
 
 async function copyLogMessage() {
   if (logEntry instanceof ComplexLogEntry) {
@@ -115,6 +125,20 @@ async function copyPermalink() {
         title: t("toasts.copied.title"),
         message: t("toasts.copied.message"),
         type: "info",
+      },
+      { expire: 2000 },
+    );
+  }
+}
+
+function hideLogEntry() {
+  if (hideLogEntryFn) {
+    hideLogEntryFn(logEntry.id);
+    showToast(
+      {
+        title: t("toasts.hidden.title"),
+        message: t("toasts.hidden.message"),
+        type: "success",
       },
       { expire: 2000 },
     );

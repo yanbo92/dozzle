@@ -1,7 +1,7 @@
 <template>
   <div class="toast toast-end whitespace-normal max-md:end-auto max-md:m-0 max-md:max-w-full">
     <div
-      class="alert max-w-xl shadow-sm max-md:rounded-none"
+      class="alert max-w-xl shadow-sm max-md:rounded-none flex items-center"
       v-for="{ toast, options: { timed } } in toasts"
       :key="toast.id"
       :class="{
@@ -13,11 +13,11 @@
       <carbon:information class="size-6 shrink-0 stroke-current" v-if="toast.type === 'info'" />
       <carbon:warning class="size-6 shrink-0 stroke-current" v-else-if="toast.type === 'error'" />
       <carbon:warning class="size-6 shrink-0 stroke-current" v-else-if="toast.type === 'warning'" />
-      <div>
+      <div class="flex-1">
         <h3 class="text-lg font-bold" v-if="toast.title">{{ toast.title }}</h3>
         <div v-html="toast.message" class="[&>a]:underline"></div>
       </div>
-      <div>
+      <div class="flex-shrink-0">
         <TimedButton
           v-if="timed"
           class="btn-primary btn-sm"

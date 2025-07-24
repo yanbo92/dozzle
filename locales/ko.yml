@@ -16,6 +16,7 @@ action:
   copy-link: 영구 링크 복사
   see-in-context: 컨텍스트에서 보기
   show-details: 세부 정보 표시
+  hide-log: 로그 숨기기
 label:
   containers: 컨테이너
   container: 컨테이너가 없습니다 | 컨테이너 1개 | 컨테이너 {count}개
@@ -54,8 +55,7 @@ error:
   events-stream:
     title: 예상치 못한 오류
     message: >-
-      Dozzle UI가 API에 연결하지 못했습니다. 네트워크 설정을 확인해 주세요.
-      리버스 프록시를 사용 중이라면 설정이 올바른지 확인해 주세요.
+      Dozzle UI가 API에 연결하지 못했습니다. 네트워크 설정을 확인해 주세요. 리버스 프록시를 사용 중이라면 설정이 올바른지 확인해 주세요.
   events-timeout:
     title: 문제가 발생했습니다
     message: >-
@@ -67,8 +67,7 @@ alert:
   similar-container-found:
     title: 비슷한 컨테이너를 찾았습니다
     message: >-
-      Dozzle이 같은 호스트에서 실행 중인 비슷한 컨테이너 {containerId}를 찾았습니다.
-      '취소'를 누르지 않으면 자동으로 해당 컨테이너로 전환됩니다.
+      Dozzle이 같은 호스트에서 실행 중인 비슷한 컨테이너 {containerId}를 찾았습니다. '취소'를 누르지 않으면 자동으로 해당 컨테이너로 전환됩니다.
 title:
   page-not-found: 페이지를 찾을 수 없습니다
   login: 인증이 필요합니다
@@ -85,8 +84,7 @@ placeholder:
   search: 검색
 settings:
   help-support: >
-    GitHub에서 후원하거나 기부로 Dozzle을 응원해 주세요. 여러분의 도움으로
-    모두를 위한 더 나은 Dozzle을 만들 수 있습니다. 감사합니다! 🙏🏼
+    GitHub에서 후원하거나 기부로 Dozzle을 응원해 주세요. 여러분의 도움으로 모두를 위한 더 나은 Dozzle을 만들 수 있습니다. 감사합니다! 🙏🏼
   display: 화면 설정
   locale: 언어 변경
   small-scrollbars: 작은 스크롤바 사용
@@ -101,8 +99,7 @@ settings:
   search: Dozzle 검색 기능 사용
   using-version: <a href="https://dozzle.dev/" target="_blank" rel="noreferrer noopener">Dozzle</a> {version}을 사용하고 있습니다.
   update-available: >-
-    새 버전이 있습니다! <a href="{href}" target="_blank"
-    rel="noreferrer noopener">{nextVersion}</a>으로 업데이트하세요.
+    새 버전이 있습니다! <a href="{href}" target="_blank" rel="noreferrer noopener">{nextVersion}</a>으로 업데이트하세요.
   show-std: stdout 및 stderr 라벨 표시
   automatic-redirect: 같은 이름의 새 컨테이너로 자동 이동
   compact: 로그 간단하게 보기
