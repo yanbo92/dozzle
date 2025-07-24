@@ -2,9 +2,6 @@
   <div>
     <MobileMenu v-if="isMobile && !forceMenuHidden" @search="showFuzzySearch"></MobileMenu>
     <Splitpanes @resized="onResized($event)">
-      <Pane min-size="10" :size="menuWidth" v-if="!isMobile && !collapseNav && !forceMenuHidden">
-        <SidePanel @search="showFuzzySearch" />
-      </Pane>
       <Pane min-size="10" :size="100 - menuWidth">
         <Splitpanes>
           <Pane class="router-view min-h-screen">
