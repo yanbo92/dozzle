@@ -67,6 +67,7 @@ declare module 'vue' {
     'MaterialSymbols:contentCopy': typeof import('~icons/material-symbols/content-copy')['default']
     'MaterialSymbols:delete': typeof import('~icons/material-symbols/delete')['default']
     'MaterialSymbols:eyeTracking': typeof import('~icons/material-symbols/eye-tracking')['default']
+    'MaterialSymbols:formatListBulleted': typeof import('~icons/material-symbols/format-list-bulleted')['default']
     'MaterialSymbols:link': typeof import('~icons/material-symbols/link')['default']
     'MaterialSymbols:logout': typeof import('~icons/material-symbols/logout')['default']
     'MaterialSymbols:terminal': typeof import('~icons/material-symbols/terminal')['default']
