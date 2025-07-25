@@ -18,6 +18,7 @@ action:
   see-in-context: Im Kontext anzeigen
   show-details: Details anzeigen
   hide-log: Log ausblenden
+  hiding-log: Vollständigen Block abrufen...
 label:
   containers: Container
   container: Keine Container | 1 Container | {count} Container
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Ausgeblendet
     message: Log-Eintrag wurde ausgeblendet, aktualisieren um wiederherzustellen
+  error:
+    title: Fehler
+    message: Log-Block konnte nicht ausgeblendet werden
 analytics:
   creating_table: Temporäre Tabelle wird erstellt...
   downloading: Container-Logs werden abgerufen... ({size})

@@ -64,9 +64,10 @@
       </li>
       <li class="border-t border-base-content/20 my-1"></li>
       <li>
-        <a @click="hideLogEntry()" class="text-warning hover:bg-warning/10">
-          <material-symbols:visibility-off />
-          {{ $t("action.hide-log") }}
+        <a @click="hideLogEntry()" class="text-warning hover:bg-warning/10" :class="{ 'pointer-events-none': isHiding }">
+          <span v-if="isHiding" class="loading loading-spinner loading-xs"></span>
+          <material-symbols:visibility-off v-else />
+          {{ isHiding ? $t("action.hiding-log") : $t("action.hide-log") }}
         </a>
       </li>
     </ul>
@@ -91,9 +92,10 @@ const { isSearching, resetSearch } = useSearchFilter();
 
 const { copy, isSupported, copied } = useClipboard();
 const { t } = useI18n();
+const isHiding = ref(false);
 
 // Inject hide functionality from parent
-const hideLogEntryFn = inject<((logId: number) => void) | undefined>('hideLogEntry', undefined);
+const hideLogEntryFn = inject<((logId: number) => Promise<void>) | undefined>('hideLogEntry', undefined);
 
 // Inject messages from parent to access the full log stream
 const messages = inject<Ref<LogEntry<string | JSONObject>[]>>('messages', ref([]));
@@ -199,17 +201,32 @@ async function copyPermalink() {
   }
 }
 
-function hideLogEntry() {
-  if (hideLogEntryFn) {
-    hideLogEntryFn(logEntry.id);
-    showToast(
-      {
-        title: t("toasts.hidden.title"),
-        message: t("toasts.hidden.message"),
-        type: "success",
-      },
-      { expire: 2000 },
-    );
+async function hideLogEntry() {
+  if (hideLogEntryFn && !isHiding.value) {
+    try {
+      isHiding.value = true;
+      await hideLogEntryFn(logEntry.id);
+      showToast(
+        {
+          title: t("toasts.hidden.title"),
+          message: t("toasts.hidden.message"),
+          type: "success",
+        },
+        { expire: 2000 },
+      );
+    } catch (error) {
+      console.error('Failed to hide log entry:', error);
+      showToast(
+        {
+          title: t("toasts.error.title"),
+          message: t("toasts.error.message"),
+          type: "error",
+        },
+        { expire: 3000 },
+      );
+    } finally {
+      isHiding.value = false;
+    }
   }
 }
 

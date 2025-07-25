@@ -18,6 +18,7 @@ action:
   see-in-context: Bekijk in context
   show-details: Toon details
   hide-log: Log verbergen
+  hiding-log: Volledig blok ophalen...
 label:
   containers: Containers
   container: Geen containers | 1 container | {count} containers
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Verborgen
     message: Logblok is verborgen, ververs om te herstellen
+  error:
+    title: Fout
+    message: Kon logblok niet verbergen
 analytics:
   creating_table: Tijdelijke tabel wordt aangemaakt...
   downloading: Containerlogs worden opgehaald... ({size})

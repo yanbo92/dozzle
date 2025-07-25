@@ -18,6 +18,7 @@ action:
   see-in-context: Zobacz w kontekście
   show-details: Pokaż szczegóły
   hide-log: Ukryj log
+  hiding-log: Pobieranie pełnego bloku...
 label:
   service: Brak usług | 1 usługa | {count} usług
   total-containers: Całkowita liczba kontenerów
@@ -136,6 +137,9 @@ toasts:
   hidden:
     title: Ukryty
     message: Blok logu został ukryty, odśwież aby przywrócić
+  error:
+    title: Błąd
+    message: Nie udało się ukryć bloku logu
 analytics:
   creating_table: Tworzenie tymczasowej tabeli...
   downloading: Pobieranie logów kontenerów... ({size})

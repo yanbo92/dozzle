@@ -18,6 +18,7 @@ action:
   see-in-context: See in context
   show-details: Show details
   hide-log: Hide block
+  hiding-log: Fetching complete block...
 label:
   containers: Containers
   container: No containers | 1 container | {count} containers
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Hidden
     message: Log block has been hidden, refresh to recover
+  error:
+    title: Error
+    message: Failed to hide log block
 analytics:
   creating_table: Creating temporary table...
   downloading: Fetching container logs... ({size})

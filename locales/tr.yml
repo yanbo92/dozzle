@@ -18,6 +18,7 @@ action:
   see-in-context: Bağlamda gör
   show-details: Detayları göster
   hide-log: Günlüğü gizle
+  hiding-log: Tam blok getiriliyor...
 label:
   containers: Konteynerlar
   container: Konteyner yok | 1 konteyner | {count} konteyner
@@ -129,6 +130,9 @@ toasts:
   hidden:
     title: Gizlendi
     message: Günlük bloğu gizlendi, kurtarmak için yenileyin
+  error:
+    title: Hata
+    message: Günlük bloğu gizlenemedi
 analytics:
   creating_table: Geçici tablo oluşturuluyor...
   downloading: Konteyner günlükleri alınıyor... ({size})

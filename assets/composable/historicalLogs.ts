@@ -119,53 +119,99 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
   // 维护隐藏日志的状态，而不是直接从messages数组中删除
   const hiddenLogIds = ref(new Set<number>());
 
-  function hideLogEntry(logId: number) {
+  async function hideLogEntry(logId: number) {
     const targetEntry = messages.value.find(message => message.id === logId);
     if (!targetEntry) return;
 
     // If it's a simple log entry with position info, hide the entire block
     // This uses the same logic as the green vertical bar (LogLevel component)
     if (targetEntry instanceof SimpleLogEntry && targetEntry.position) {
-      const targetIndex = messages.value.findIndex(message => message.id === logId);
-      const blockIds = new Set<number>();
-
-      // Find the start of the block by going backwards
-      let startIndex = targetIndex;
-      while (startIndex >= 0) {
-        const entry = messages.value[startIndex];
-        if (entry instanceof SimpleLogEntry &&
-            entry.containerID === targetEntry.containerID &&
-            entry.position) {
-          blockIds.add(entry.id);
-          if (entry.position === 'start') break;
-          startIndex--;
-        } else {
-          break;
-        }
-      }
-
-      // Find the end of the block by going forwards
-      let endIndex = targetIndex + 1;
-      while (endIndex < messages.value.length) {
-        const entry = messages.value[endIndex];
-        if (entry instanceof SimpleLogEntry &&
-            entry.containerID === targetEntry.containerID &&
-            entry.position) {
-          blockIds.add(entry.id);
-          if (entry.position === 'end') break;
-          endIndex++;
-        } else {
-          break;
-        }
-      }
-
-      // 将整个块的ID添加到隐藏列表中，而不是从messages数组中删除
-      blockIds.forEach(id => hiddenLogIds.value.add(id));
+      await hideCompleteLogBlock(logId, targetEntry);
       return;
     }
 
     // Default behavior: hide single entry by adding to hidden set
     hiddenLogIds.value.add(logId);
+  }
+
+  async function hideCompleteLogBlock(logId: number, targetEntry: SimpleLogEntry) {
+    const targetIndex = messages.value.findIndex(message => message.id === logId);
+    const blockIds = new Set<number>();
+    let foundStart = false;
+
+    // Find the start of the block by going backwards
+    let startIndex = targetIndex;
+    while (startIndex >= 0) {
+      const entry = messages.value[startIndex];
+      if (entry instanceof SimpleLogEntry &&
+          entry.containerID === targetEntry.containerID &&
+          entry.position) {
+        blockIds.add(entry.id);
+        if (entry.position === 'start') {
+          foundStart = true;
+          break;
+        }
+        startIndex--;
+      } else {
+        break;
+      }
+    }
+
+    // Find the end of the block by going forwards
+    let endIndex = targetIndex + 1;
+    while (endIndex < messages.value.length) {
+      const entry = messages.value[endIndex];
+      if (entry instanceof SimpleLogEntry &&
+          entry.containerID === targetEntry.containerID &&
+          entry.position) {
+        blockIds.add(entry.id);
+        if (entry.position === 'end') break;
+        endIndex++;
+      } else {
+        break;
+      }
+    }
+
+    // If we haven't found the start of the block, we need to load more logs
+    if (!foundStart && startIndex >= 0) {
+      const firstEntry = messages.value[startIndex + 1];
+      if (firstEntry && firstEntry instanceof SimpleLogEntry) {
+        try {
+          loadingMore.value = true;
+          // Load more logs before the first entry to find the block start
+          const { logs } = await loadBetween(
+            container,
+            params,
+            new Date(firstEntry.date.getTime() - 1000 * 60 * 10), // 10 minutes before
+            firstEntry.date,
+            {
+              min: 200,
+              lastSeenId: firstEntry.id,
+            }
+          );
+
+          if (logs.length > 0) {
+            // Insert the new logs at the beginning (after the loader if it exists)
+            const hasLoader = messages.value[0] instanceof LoadMoreLogEntry;
+            const insertIndex = hasLoader ? 1 : 0;
+            const beforeLoader = messages.value.slice(0, insertIndex);
+            const afterLoader = messages.value.slice(insertIndex);
+            messages.value = [...beforeLoader, ...logs, ...afterLoader];
+
+            // Recursively try to hide the complete block again
+            await hideCompleteLogBlock(logId, targetEntry);
+            return;
+          }
+        } catch (error) {
+          console.error('Failed to load more logs for complete block hiding:', error);
+        } finally {
+          loadingMore.value = false;
+        }
+      }
+    }
+
+    // 将整个块的ID添加到隐藏列表中，而不是从messages数组中删除
+    blockIds.forEach(id => hiddenLogIds.value.add(id));
   }
 
   // 创建过滤后的消息计算属性，排除隐藏的日志

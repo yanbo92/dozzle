@@ -18,6 +18,7 @@ action:
   see-in-context: Glej v kontekstu
   show-details: Prikaži podrobnosti
   hide-log: Skrij dnevnik
+  hiding-log: Pridobivanje celotnega bloka...
 label:
   containers: Zabojniki
   service: Ni storitev | 1 storitev | {count} storitev
@@ -127,6 +128,9 @@ toasts:
   hidden:
     title: Skrito
     message: Blok dnevnika je skrit, osvežite za obnovitev
+  error:
+    title: Napaka
+    message: Ni mogoče skriti bloka dnevnika
 analytics:
   downloading: Pridobivanje dnevnikov zabojnika... ({size})
   evaluating_query: Ocenjevanje poizvedbe...

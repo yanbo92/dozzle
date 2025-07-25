@@ -18,6 +18,7 @@ action:
   see-in-context: Vedi nel contesto
   show-details: Mostra dettagli
   hide-log: Nascondi log
+  hiding-log: Recupero blocco completo...
 label:
   containers: Container
   container: Nessun container | 1 container | {count} container
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Nascosto
     message: Voce di log nascosta, aggiorna per recuperare
+  error:
+    title: Errore
+    message: Impossibile nascondere il blocco di log
 analytics:
   creating_table: Creazione tabella temporanea...
   downloading: Recupero dei log dei container... ({size})

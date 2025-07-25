@@ -18,6 +18,7 @@ action:
   see-in-context: Se i kontekst
   show-details: Vis detaljer
   hide-log: Skjul log
+  hiding-log: Henter komplet blok...
 label:
   containers: Containere
   container: Ingen containere | 1 container | {count} containere
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Skjult
     message: Log-blok er skjult, opdater for at gendanne
+  error:
+    title: Fejl
+    message: Kunne ikke skjule log-blok
 analytics:
   creating_table: Opretter midlertidig tabel...
   downloading: Henter containerlogfiler... ({size})

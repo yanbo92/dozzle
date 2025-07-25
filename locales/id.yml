@@ -18,6 +18,7 @@ action:
   see-in-context: Lihat dalam konteks
   show-details: Tampilkan detail
   hide-log: Sembunyikan log
+  hiding-log: Mengambil blok lengkap...
 
 label:
   containers: Kontainer
@@ -143,6 +144,9 @@ toasts:
   hidden:
     title: Disembunyikan
     message: Blok log disembunyikan, segarkan untuk memulihkan
+  error:
+    title: Kesalahan
+    message: Gagal menyembunyikan blok log
 
 analytics:
   creating_table: Membuat tabel sementara...

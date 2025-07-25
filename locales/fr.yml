@@ -18,6 +18,7 @@ action:
   see-in-context: Voir dans le contexte
   show-details: Afficher les détails
   hide-log: Masquer le journal
+  hiding-log: Récupération du bloc complet...
 label:
   containers: Conteneurs
   container: Pas de conteneur | 1 conteneur | {count} conteneurs
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Masqué
     message: L'entrée de journal a été masquée, actualiser pour récupérer
+  error:
+    title: Erreur
+    message: Échec de masquage du bloc de journal
 analytics:
   creating_table: Création d'une table temporaire...
   downloading: Récupération des journaux des conteneurs... ({size})

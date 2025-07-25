@@ -18,6 +18,7 @@ action:
   see-in-context: Ver no contexto
   show-details: Mostrar detalhes
   hide-log: Ocultar registo
+  hiding-log: A obter bloco completo...
 label:
   containers: Contentores
   container: Nenhum contentor | 1 contentor | {count} contentores
@@ -138,6 +139,9 @@ toasts:
   hidden:
     title: Oculto
     message: Bloco de log ocultado, actualizar para recuperar
+  error:
+    title: Erro
+    message: Falha ao ocultar bloco de log
 
 analytics:
   creating_table: A criar tabela temporária...

@@ -18,6 +18,7 @@ action:
   see-in-context: Посмотреть в контексте
   show-details: Показать детали
   hide-log: Скрыть лог
+  hiding-log: Получение полного блока...
 label:
   containers: Контейнеры
   container: Нет контейнеров | 1 контейнер | {count} контейнеров
@@ -132,6 +133,9 @@ toasts:
   hidden:
     title: Скрыто
     message: Блок лога скрыт, обновите для восстановления
+  error:
+    title: Ошибка
+    message: Не удалось скрыть блок лога
 analytics:
   creating_table: Создание временной таблицы...
   downloading: Получение логов контейнеров... ({size})
