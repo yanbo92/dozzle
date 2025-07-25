@@ -158,6 +158,15 @@ func createEvent(message string, streamType StdType) *LogEvent {
 
 func checkPosition(currentEvent *LogEvent, nextEvent *LogEvent) {
 	currentLevel := guessLogLevel(currentEvent)
+
+	// 智能块检测：识别孤立的JSON行
+	if currentLevel == "unknown" && currentEvent.Position == "" {
+		msgStr := strings.TrimSpace(fmt.Sprintf("%v", currentEvent.Message))
+		if strings.HasPrefix(msgStr, "\"") && strings.Contains(msgStr, ":") {
+			currentEvent.Position = Middle
+			currentEvent.Level = "info"
+		}
+	}
 	if nextEvent != nil {
 		if currentEvent.IsCloseToTime(nextEvent) && currentLevel != "unknown" && !nextEvent.HasLevel() {
 			currentEvent.Position = Beginning
