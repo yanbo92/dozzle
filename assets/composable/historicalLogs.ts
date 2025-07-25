@@ -116,6 +116,9 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
     }
   }
 
+  // 维护隐藏日志的状态，而不是直接从messages数组中删除
+  const hiddenLogIds = ref(new Set<number>());
+
   function hideLogEntry(logId: number) {
     const targetEntry = messages.value.find(message => message.id === logId);
     if (!targetEntry) return;
@@ -125,12 +128,12 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
     if (targetEntry instanceof SimpleLogEntry && targetEntry.position) {
       const targetIndex = messages.value.findIndex(message => message.id === logId);
       const blockIds = new Set<number>();
-      
+
       // Find the start of the block by going backwards
       let startIndex = targetIndex;
       while (startIndex >= 0) {
         const entry = messages.value[startIndex];
-        if (entry instanceof SimpleLogEntry && 
+        if (entry instanceof SimpleLogEntry &&
             entry.containerID === targetEntry.containerID &&
             entry.position) {
           blockIds.add(entry.id);
@@ -140,12 +143,12 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
           break;
         }
       }
-      
+
       // Find the end of the block by going forwards
       let endIndex = targetIndex + 1;
       while (endIndex < messages.value.length) {
         const entry = messages.value[endIndex];
-        if (entry instanceof SimpleLogEntry && 
+        if (entry instanceof SimpleLogEntry &&
             entry.containerID === targetEntry.containerID &&
             entry.position) {
           blockIds.add(entry.id);
@@ -155,18 +158,23 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
           break;
         }
       }
-      
-      // Hide the entire block
-      messages.value = messages.value.filter(message => !blockIds.has(message.id));
+
+      // 将整个块的ID添加到隐藏列表中，而不是从messages数组中删除
+      blockIds.forEach(id => hiddenLogIds.value.add(id));
       return;
     }
 
-    // Default behavior: hide single entry
-    messages.value = messages.value.filter(message => message.id !== logId);
+    // Default behavior: hide single entry by adding to hidden set
+    hiddenLogIds.value.add(logId);
   }
 
+  // 创建过滤后的消息计算属性，排除隐藏的日志
+  const visibleMessages = computed(() => {
+    return messages.value.filter(message => !hiddenLogIds.value.has(message.id));
+  });
+
   return {
-    messages,
+    messages: visibleMessages,
     opened,
     error,
     loading,
