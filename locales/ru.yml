@@ -19,6 +19,7 @@ action:
   show-details: Показать детали
   hide-log: Скрыть лог
   hiding-log: Получение полного блока...
+  copying-block: Получение полного блока...
 label:
   containers: Контейнеры
   container: Нет контейнеров | 1 контейнер | {count} контейнеров

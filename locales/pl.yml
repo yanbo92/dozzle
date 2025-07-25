@@ -19,6 +19,7 @@ action:
   show-details: Pokaż szczegóły
   hide-log: Ukryj log
   hiding-log: Pobieranie pełnego bloku...
+  copying-block: Pobieranie pełnego bloku...
 label:
   service: Brak usług | 1 usługa | {count} usług
   total-containers: Całkowita liczba kontenerów

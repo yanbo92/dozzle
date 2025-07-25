@@ -19,6 +19,7 @@ action:
   show-details: Prikaži podrobnosti
   hide-log: Skrij dnevnik
   hiding-log: Pridobivanje celotnega bloka...
+  copying-block: Pridobivanje celotnega bloka...
 label:
   containers: Zabojniki
   service: Ni storitev | 1 storitev | {count} storitev

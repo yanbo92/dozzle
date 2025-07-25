@@ -19,6 +19,7 @@ action:
   show-details: Tampilkan detail
   hide-log: Sembunyikan log
   hiding-log: Mengambil blok lengkap...
+  copying-block: Mengambil blok lengkap...
 
 label:
   containers: Kontainer

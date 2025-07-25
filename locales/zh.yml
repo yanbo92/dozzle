@@ -19,6 +19,7 @@ action:
   show-details: 显示详细信息
   hide-log: 隐藏日志块
   hiding-log: 正在获取完整块内容...
+  copying-block: 正在复制完整块内容...
 label:
   containers: 容器
   container: 无容器 | 1 容器 | {count} 容器

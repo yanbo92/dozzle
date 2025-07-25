@@ -19,6 +19,7 @@ action:
   show-details: 세부 정보 표시
   hide-log: 로그 숨기기
   hiding-log: 전체 블록 가져오는 중...
+  copying-block: 전체 블록 가져오는 중...
 label:
   containers: 컨테이너
   container: 컨테이너가 없습니다 | 컨테이너 1개 | 컨테이너 {count}개

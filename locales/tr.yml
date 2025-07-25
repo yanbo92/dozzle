@@ -19,6 +19,7 @@ action:
   show-details: Detayları göster
   hide-log: Günlüğü gizle
   hiding-log: Tam blok getiriliyor...
+  copying-block: Tam blok getiriliyor...
 label:
   containers: Konteynerlar
   container: Konteyner yok | 1 konteyner | {count} konteyner

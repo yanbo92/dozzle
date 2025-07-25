@@ -19,6 +19,7 @@ action:
   show-details: Afficher les détails
   hide-log: Masquer le journal
   hiding-log: Récupération du bloc complet...
+  copying-block: Récupération du bloc complet...
 label:
   containers: Conteneurs
   container: Pas de conteneur | 1 conteneur | {count} conteneurs

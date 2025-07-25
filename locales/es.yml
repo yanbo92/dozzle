@@ -19,6 +19,7 @@ action:
   show-details: Mostrar detalles
   hide-log: Ocultar registro
   hiding-log: Obteniendo bloque completo...
+  copying-block: Obteniendo bloque completo...
 label:
   containers: Contenedores
   container: No contenedores | 1 contenedor | {count} contenedores

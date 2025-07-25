@@ -45,9 +45,10 @@
         </a>
       </li>
       <li v-if="isSupported && logEntry instanceof SimpleLogEntry && logEntry.position">
-        <a @click="copyLogBlock()">
-          <material-symbols:content-copy />
-          {{ $t("action.copy-block") }}
+        <a @click="copyLogBlock()" :class="{ 'pointer-events-none': isCopying }">
+          <span v-if="isCopying" class="loading loading-spinner loading-xs"></span>
+          <material-symbols:content-copy v-else />
+          {{ isCopying ? $t("action.copying-block") : $t("action.copy-block") }}
         </a>
       </li>
       <li v-if="isSupported">
@@ -93,12 +94,15 @@ const { isSearching, resetSearch } = useSearchFilter();
 const { copy, isSupported, copied } = useClipboard();
 const { t } = useI18n();
 const isHiding = ref(false);
+const isCopying = ref(false);
 
 // Inject hide functionality from parent
 const hideLogEntryFn = inject<((logId: number) => Promise<void>) | undefined>('hideLogEntry', undefined);
 
-// Inject messages from parent to access the full log stream
-const messages = inject<Ref<LogEntry<string | JSONObject>[]>>('messages', ref([]));
+// Inject complete log block functionality from parent
+const getCompleteLogBlockFn = inject<((logId: number) => Promise<SimpleLogEntry[]>) | undefined>('getCompleteLogBlock', undefined);
+
+
 
 async function copyLogMessage() {
   if (logEntry instanceof ComplexLogEntry) {
@@ -120,61 +124,43 @@ async function copyLogMessage() {
 }
 
 async function copyLogBlock() {
-  if (!(logEntry instanceof SimpleLogEntry) || !logEntry.position) {
+  if (!(logEntry instanceof SimpleLogEntry) || !logEntry.position || isCopying.value || !getCompleteLogBlockFn) {
     return;
   }
 
-  const targetIndex = messages.value.findIndex(message => message.id === logEntry.id);
-  if (targetIndex === -1) return;
+  try {
+    isCopying.value = true;
+    const blockEntries = await getCompleteLogBlockFn(logEntry.id);
 
-  const blockEntries: SimpleLogEntry[] = [];
-  
-  // 向后查找块的开始
-  let startIndex = targetIndex;
-  while (startIndex >= 0) {
-    const entry = messages.value[startIndex];
-    if (entry instanceof SimpleLogEntry && 
-        entry.containerID === logEntry.containerID &&
-        entry.position) {
-      blockEntries.unshift(entry);
-      if (entry.position === 'start') break;
-      startIndex--;
-    } else {
-      break;
+    // 将所有块条目的原始消息连接起来
+    const blockContent = blockEntries
+      .map((entry: SimpleLogEntry) => stripAnsi(entry.rawMessage))
+      .join('\n');
+
+    await copy(blockContent);
+
+    if (copied.value) {
+      showToast(
+        {
+          title: t("toasts.copied.title"),
+          message: t("toasts.copied.block-message"),
+          type: "info",
+        },
+        { expire: 2000 },
+      );
     }
-  }
-  
-  // 向前查找块的结束
-  let endIndex = targetIndex + 1;
-  while (endIndex < messages.value.length) {
-    const entry = messages.value[endIndex];
-    if (entry instanceof SimpleLogEntry && 
-        entry.containerID === logEntry.containerID &&
-        entry.position) {
-      blockEntries.push(entry);
-      if (entry.position === 'end') break;
-      endIndex++;
-    } else {
-      break;
-    }
-  }
-
-  // 将所有块条目的原始消息连接起来
-  const blockContent = blockEntries
-    .map(entry => stripAnsi(entry.rawMessage))
-    .join('\n');
-
-  await copy(blockContent);
-
-  if (copied.value) {
+  } catch (error) {
+    console.error('Failed to copy log block:', error);
     showToast(
       {
-        title: t("toasts.copied.title"),
-        message: t("toasts.copied.block-message"),
-        type: "info",
+        title: t("toasts.error.title"),
+        message: t("toasts.error.message"),
+        type: "error",
       },
-      { expire: 2000 },
+      { expire: 3000 },
     );
+  } finally {
+    isCopying.value = false;
   }
 }
 

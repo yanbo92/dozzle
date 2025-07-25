@@ -19,6 +19,7 @@ action:
   show-details: 顯示詳細資訊
   hide-log: 隱藏日誌
   hiding-log: 正在獲取完整區塊內容...
+  copying-block: 正在獲取完整區塊內容...
 label:
   containers: 容器
   container: 無容器 | 1 個容器 | {count} 個容器

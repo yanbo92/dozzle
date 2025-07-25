@@ -19,6 +19,7 @@ action:
   show-details: Vis detaljer
   hide-log: Skjul log
   hiding-log: Henter komplet blok...
+  copying-block: Henter komplet blok...
 label:
   containers: Containere
   container: Ingen containere | 1 container | {count} containere

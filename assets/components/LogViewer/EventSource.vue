@@ -24,10 +24,13 @@ const { entity, streamSource } = $defineProps<{
 
 const { historical } = useLoggingContext();
 
-const { messages, opened, loading, error, hideLogEntry } = streamSource(toRef(() => entity));
+const { messages, opened, loading, error, hideLogEntry, getCompleteLogBlock } = streamSource(toRef(() => entity));
 
 // Provide hide functionality to child components
 provide('hideLogEntry', hideLogEntry);
+
+// Provide complete log block functionality to child components
+provide('getCompleteLogBlock', getCompleteLogBlock);
 
 // Provide messages to child components for copy block functionality
 provide('messages', messages);

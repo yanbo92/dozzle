@@ -219,11 +219,95 @@ export function useHistoricalContainerLog(historicalContainer: Ref<HistoricalCon
     return messages.value.filter(message => !hiddenLogIds.value.has(message.id));
   });
 
+  async function getCompleteLogBlock(logId: number): Promise<SimpleLogEntry[]> {
+    const targetEntry = messages.value.find(message => message.id === logId);
+    if (!targetEntry || !(targetEntry instanceof SimpleLogEntry) || !targetEntry.position) {
+      return [];
+    }
+
+    const targetIndex = messages.value.findIndex(message => message.id === logId);
+    const blockEntries: SimpleLogEntry[] = [];
+    let foundStart = false;
+
+    // Find the start of the block by going backwards
+    let startIndex = targetIndex;
+    while (startIndex >= 0) {
+      const entry = messages.value[startIndex];
+      if (entry instanceof SimpleLogEntry &&
+          entry.containerID === targetEntry.containerID &&
+          entry.position) {
+        blockEntries.unshift(entry);
+        if (entry.position === 'start') {
+          foundStart = true;
+          break;
+        }
+        startIndex--;
+      } else {
+        break;
+      }
+    }
+
+    // Find the end of the block by going forwards
+    let endIndex = targetIndex + 1;
+    while (endIndex < messages.value.length) {
+      const entry = messages.value[endIndex];
+      if (entry instanceof SimpleLogEntry &&
+          entry.containerID === targetEntry.containerID &&
+          entry.position) {
+        blockEntries.push(entry);
+        if (entry.position === 'end') break;
+        endIndex++;
+      } else {
+        break;
+      }
+    }
+
+    // If we haven't found the start of the block, we need to load more logs
+    if (!foundStart && startIndex >= 0) {
+      const firstEntry = messages.value[startIndex + 1];
+      if (firstEntry && firstEntry instanceof SimpleLogEntry) {
+        try {
+          loadingMore.value = true;
+          // Load more logs before the first entry to find the block start
+          const { logs } = await loadBetween(
+            container,
+            params,
+            new Date(firstEntry.date.getTime() - 1000 * 60 * 10), // 10 minutes before
+            firstEntry.date,
+            {
+              min: 200,
+              lastSeenId: firstEntry.id,
+            }
+          );
+
+          if (logs.length > 0) {
+            // Insert the new logs at the beginning (after the loader if it exists)
+            const hasLoader = messages.value[0] instanceof LoadMoreLogEntry;
+            const insertIndex = hasLoader ? 1 : 0;
+            const beforeLoader = messages.value.slice(0, insertIndex);
+            const afterLoader = messages.value.slice(insertIndex);
+            messages.value = [...beforeLoader, ...logs, ...afterLoader];
+
+            // Recursively try to get the complete block again
+            return await getCompleteLogBlock(logId);
+          }
+        } catch (error) {
+          console.error('Failed to load more logs for complete block:', error);
+        } finally {
+          loadingMore.value = false;
+        }
+      }
+    }
+
+    return blockEntries;
+  }
+
   return {
     messages: visibleMessages,
     opened,
     error,
     loading,
     hideLogEntry,
+    getCompleteLogBlock,
   };
 }

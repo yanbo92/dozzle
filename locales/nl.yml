@@ -19,6 +19,7 @@ action:
   show-details: Toon details
   hide-log: Log verbergen
   hiding-log: Volledig blok ophalen...
+  copying-block: Volledig blok ophalen...
 label:
   containers: Containers
   container: Geen containers | 1 container | {count} containers
